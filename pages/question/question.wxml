@@ -64,7 +64,7 @@
 	<view class="footer-tab footer-tab-widthicon">
 		<view class="footer-tab-item {{showfootertab==0?'active':''}}" data-index="0" bindtap="showTab">
 			<image src="../../images/{{showfootertab==0?'xinxifill':'xinxi'}}.png" mode="aspectFit"></image>
-			<text>问题反馈</text>
+			<text>问</text>
 		</view>
 		<view class="footer-tab-item {{showfootertab==1?'active':''}}" data-index="1" bindtap="showTab">
 			<image src="../../images/{{showfootertab==1?'wenhaofill':'wenhao'}}.png" mode="aspectFit"></image>
