@@ -4,7 +4,7 @@
     autoplay="{{true}}" interval="{{4000}}" duration="{{1000}}">
     <block wx:for="{{imgUrls}}" wx:key="*this">
       <swiper-item>
-        <image src="{{servsers}}{{item.fileUrl}}" mode="aspectFill" class="slide-image"/>
+        <image src="{{imageUrl}}{{item.fileUrl}}" mode="aspectFill" class="slide-image"/>
       </swiper-item>
     </block>
   </swiper>
@@ -23,7 +23,7 @@
 	  </view>
   <navigator class="my-reserve-item" wx:for="{{newsList}}" wx:key="{{item.id }}" url="../activitydetail/activitydetail?id={{item.id}}">				
         <view class="my-reserve-img">
-					<image src="{{servsers}}{{item.logo}}" mode="aspectFill"></image>
+					<image src="{{imageUrl}}{{item.logo}}" mode="aspectFill"></image>
 				</view>
 				<view class="my-reserve-text">
 					<view class="my-reserve-title">{{item.title}}</view>
