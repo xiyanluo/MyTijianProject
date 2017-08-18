@@ -61,7 +61,12 @@
     
 	</view>
 	<view class="container-footer">
-		<text class="call-btn" bindtap="reserveHandle">拨打电话</text>
-		<text class="apply-btn" bindtap="goApply">预约咨询</text>
+		<button class="call-btn" bindtap="reserveHandle">
+        <text>拨打电话</text>
+    </button>
+    <button class="kf_button" open-type="contact" session-from="weapp">
+        <text>预约咨询</text>
+    </button>
+     
 	</view>
 </view>
