@@ -1,7 +1,16 @@
+//获取应用实例
+var app = getApp();
+var servsers = getApp().globalData.baseUrl;
+var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
     navbar: ['公司简介', '宣传片', '环境展示', '联系我们'],
     currentTab: 0,
+    currentIndex: 1,
+    servsers:servsers,
+    imageUrl:imageUrl,
+    fileList:[],
+    message:{},
     titleA:'我们是谁?',
     titleB: 'who we are',
     markers: [{
@@ -14,6 +23,29 @@ Page({
     }]
   },
   onLoad: function () { //加载数据渲染页面
+    var that = this
+    var fileList2  = [];
+    wx.request({
+      url: servsers + '/khtj/json/base/tabAboutus/queryByAll',
+      data: {},
+      success: function (e) {
+        for (let i = 0; i < e.data.result.fileList.length; i++) { // 循环列表得到每个数据
+          fileList2.push(imageUrl+e.data.result.fileList[i].fileUrl)
+        }
+        that.setData({
+          message: e.data.result,
+          fileList: fileList2
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '查询失败',
+          icon: 'fail',
+          duration: 1200
+        })
+      }
+    })
+
   },
   navbarTap: function (e) {
     this.setData({
@@ -27,11 +59,11 @@ Page({
       fail: function () {}
     })
   },
+ 
   //三点-分享
   onShareAppMessage: function () {
     return {
       title: '关于我们',
-      desc: '体检就上康虹职业病体检中心,国内专业健康体检机构,在线购买体检套餐,在线预约咨询等',
       path: 'pages/index/index'
     }
   }
