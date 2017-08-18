@@ -88,11 +88,7 @@ Page({
         showCancel: false
       });
       return;
-    }
-    wx.showToast({
-      title: '付款中...',
-      icon: 'loading'
-    });
+    };
     var that = this;
     let cartsorder = this.data.cartsorder; // 获取购物车列表
     let total = 0;
@@ -119,6 +115,10 @@ Page({
 
   //获取openid
   getOpenId: function (code) {
+    wx.showToast({
+      title: '付款中...',
+      icon: 'loading'
+    });
     var that = this;
     wx.request({
       url: servsers + '/khtj/json/base/weixinpay/pay',
