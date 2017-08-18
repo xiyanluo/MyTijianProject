@@ -3,7 +3,7 @@
     <view class="conference-list">
 			<navigator class="conference-item" wx:for="{{activitylist}}" wx:key="{{item.id}}" url="../activitydetail/activitydetail?id={{item.id}}">
 				<view class="conference-item-img">
-					<image src="{{servsers}}{{item.logo}}"  mode="aspectFill"></image>
+					<image src="{{imageUrl}}{{item.logo}}"  mode="aspectFill"></image>
 					<text class="hover1" data-status="{{item.status}}" wx:if="{{item.ifHot ==1}}">热门推荐</text>
 				</view>
 				<view class="conference-item-text">

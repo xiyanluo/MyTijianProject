@@ -1,6 +1,7 @@
 //获取应用实例
 var app = getApp();
 var servsers = getApp().globalData.baseUrl;
+var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
   	servsers: servsers,
@@ -8,6 +9,7 @@ Page({
     sortid:null,  //排序id
     activitylist:[], //会议室列表列表
     scrolltop:null, //滚动位置
+    imageUrl: imageUrl,
      ye: 1,
     page: 0  //分页,
   },

@@ -98,7 +98,6 @@ page{
     top: 25rpx;
     width: 45rpx;
     height: 45rpx;
-    background-image: url(../../images/icon3.png);
     background-size: 100%;
 }
 .cart-toatl-price{

@@ -61,7 +61,7 @@
         <image  class="close-btn" src="../../images/close.png" bindtap="hideCartBox"></image>
       </view>
       <view class="layout-info">
-        <image src="{{servsers}}{{pro.logo}}"></image>
+        <image src="{{imageUrl}}{{pro.logo}}"></image>
         <view class="pr-intro">
           <view class="title lineText2">{{pro.title}}</view>
           <view class="price">￥{{pro.price}}</view>

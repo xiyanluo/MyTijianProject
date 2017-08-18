@@ -1,11 +1,13 @@
 //获取应用实例
 var app = getApp();
 var servsers = getApp().globalData.baseUrl;
+var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
     indexmenu:[],
     imgUrls: [],
     servsers: servsers,
+    imageUrl: imageUrl,
     loading: false,
     actTxt:'热门活动',
     phone:'0551-63829889'

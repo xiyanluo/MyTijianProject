@@ -3,10 +3,11 @@ var app = getApp()
 
 var util = require('../../utils/util')
 var servsers = getApp().globalData.baseUrl;
+var imageUrl = getApp().globalData.imageUrl;
 Page({
 
   data: {
-
+imageUrl: imageUrl,
     showtab: 0,  //顶部选项卡索引
 
     showtabtype: 'A', //选中类型
@@ -20,7 +21,7 @@ Page({
     page: 0,  //分页
 
     servsers: servsers,
-
+    imageUrl: imageUrl,
     loading: false,
 
     tabnav: {

@@ -7,7 +7,7 @@
 		<view class="service-list">
 			<navigator class="service-item" wx:for="{{servicelist}}" wx:key="{{item.id}}" url="../servicedetail/servicedetail?id={{item.id}}">
 				<view class="service-img">
-					<image src="{{servsers}}{{item.logo}}" ></image>
+					<image src="{{imageUrl}}{{item.logo}}" ></image>
 				</view>
 				<view class="service-text">
 					<view class="service-tite">{{item.title}}</view>
