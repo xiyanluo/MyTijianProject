@@ -23,24 +23,32 @@ Page({
   },
   bindSave: function (e) {
     var self = this;
-    var name = e.detail.value.name;
-    var phone = e.detail.value.phone;
-    var detail = e.detail.value.detail;
-    if (name == "") {
+    var name = self.data.address.name;
+    var phone = self.data.address.phone;
+    var detail = self.data.address.detail;
+    if (name==null||name == "") {
       wx.showModal({
         title: '提示',
         content: '请填写联系人姓名',
         showCancel: false
       })
-      return
+      return;
     }
-    if (phone == "") {
+    if (phone == null ||phone == "") {
       wx.showModal({
         title: '提示',
         content: '请填写手机号码',
         showCancel: false
       })
-      return
+      return;
+    }
+    if (detail == null || detail == "") {
+      wx.showModal({
+        title: '提示',
+        content: '联系人地址',
+        showCancel: false
+      })
+      return;
     }
     wx.setStorage({
         key: 'address',
