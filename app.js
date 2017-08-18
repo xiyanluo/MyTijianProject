@@ -1,4 +1,5 @@
-//app.js
+//app.js/
+//测试
 App({
   onLaunch: function () {
     //小程序初始化完成只执行一次
