@@ -1,11 +1,13 @@
 var app = getApp();
 var servsers = getApp().globalData.baseUrl;
+var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
     list: [],
     servsers: servsers,
     activitydata:{},
     spaceimgs:[],
+    imageUrl: imageUrl,
     currentIndex:1
   },
   onLoad: function (options) {
@@ -18,10 +20,10 @@ Page({
       success: function (res) {
         var list = [];
         if(res.data.result.fileList.length == 0) {
-          list.push(servsers + res.data.result.logo);
+          list.push(imageUrl + res.data.result.logo);
         } else {
           for (var i = 0; i < res.data.result.fileList.length; i++) {
-            list.push(servsers + res.data.result.fileList[i].fileUrl);
+            list.push(imageUrl + res.data.result.fileList[i].fileUrl);
           }
         }
         that.setData({

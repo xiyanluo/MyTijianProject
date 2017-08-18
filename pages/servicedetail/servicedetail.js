@@ -1,10 +1,12 @@
 var app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
 var servsers = getApp().globalData.baseUrl;
+var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
     currentIndex: 1,
   	servsers: servsers,
+    imageUrl: imageUrl,
     navbar: ['套餐详情', '体检须知'],
     currentTab: 0,
     pro: {},
@@ -26,10 +28,10 @@ Page({
       success: function (res) {
         var list = [];
         if(res.data.result.fileList.length == 0) {
-          list.push(servsers + res.data.result.logo);
+          list.push(imageUrl + res.data.result.logo);
         } else {
           for (var i = 0; i < res.data.result.fileList.length; i++) {
-            list.push(servsers + res.data.result.fileList[i].fileUrl);
+            list.push(imageUrl + res.data.result.fileList[i].fileUrl);
           }
         }
         that.setData({
@@ -129,7 +131,7 @@ Page({
     let cache = {
       id: intro.id,
       title: intro.title,
-      image: servsers + intro.logo,
+      image: imageUrl + intro.logo,
       price: intro.price,
       num: total,
       selected: true
@@ -146,7 +148,7 @@ Page({
         data: proIntro
       });
       wx.navigateTo({
-        url: '/pages/cart/cart'
+        url: '../cart/cart'
       })
     } else if (btntype == 2) {//加入订单
       let orderList=[];
