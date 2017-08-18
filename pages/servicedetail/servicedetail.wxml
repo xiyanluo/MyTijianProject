@@ -33,7 +33,7 @@
         <!-- <image src="../../images/js.jpg" mode="widthFix"></image>
         <image src="../../images/js2.jpg" mode="widthFix"></image> -->
       </view>
-      <view class="con" hidden="{{currentTab!==1}}">
+      <view class="space-passage" hidden="{{currentTab!==1}}">
            {{pro.notice}}
       </view>
     </view>

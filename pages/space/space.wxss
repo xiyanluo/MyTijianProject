@@ -106,3 +106,22 @@
 	text-indent: 2em;
 	margin-top: 20rpx;
 }
+
+.kf_button{
+  border: 0px;
+  border-radius: 0rpx ;
+  background: #FF3333;
+	color: #fff;
+	flex: 1.5;
+}
+.kf_button::after{
+  border: 0px;
+}
+
+.call-btn{
+  border: 0px;
+  border-radius: 0rpx ;
+  background: #46A3FF;
+	color: #fff;
+  	flex: 1;
+}
