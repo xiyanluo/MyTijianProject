@@ -34,7 +34,7 @@ App({
   globalData:{
     //全局信息
     userInfo:null,
-    baseUrl: "https://kh.huxiao.site",
-    imageUrl: "http://kh.huxiao.site"
+    baseUrl: "https://huxiao.site",
+    imageUrl: "http://huxiao.site"
   },
 })
