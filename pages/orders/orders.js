@@ -89,6 +89,10 @@ Page({
       });
       return;
     };
+    wx.showToast({
+      title: '付款中...',
+      icon: 'loading'
+    });
     var that = this;
     let cartsorder = this.data.cartsorder; // 获取购物车列表
     let total = 0;
@@ -115,10 +119,6 @@ Page({
 
   //获取openid
   getOpenId: function (code) {
-    wx.showToast({
-      title: '付款中...',
-      icon: 'loading'
-    });
     var that = this;
     wx.request({
       url: servsers + '/khtj/json/base/weixinpay/pay',
@@ -134,6 +134,14 @@ Page({
         body: '个人体检套餐交费'
       },
      success: function (res) {
+       if (res.data.status!=200){
+          wx.hideToast();
+          wx.showModal({
+            title: '提示',
+            content: res.data.message,
+            showCancel: false
+          }); 
+       };  
         var openId = res.data.openid;
         wx.requestPayment({  
                             'timeStamp': res.data.timeStamp.toString(),  
@@ -167,6 +175,6 @@ Page({
         });
       }
     })
-  },
+  }
 
 })

@@ -2,7 +2,7 @@
     <form bindsubmit="bindSave">
     <view class="form-box">
         <view class="row-wrap">
-            <view class="label">联系人</view>
+            <view class="label">联系人姓名</view>
             <view class="label-right">
                 <input value="{{address.name}}" placeholder="必填" bindinput="bindName"/>
             </view>
