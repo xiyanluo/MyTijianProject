@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "福利体检"
+    "navigationBarTitleText": "职业病体检",
+    "enablePullDownRefresh": false
 }

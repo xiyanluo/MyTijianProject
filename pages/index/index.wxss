@@ -102,7 +102,17 @@
 	padding: 15rpx;
   height: 45rpx;
 	font-size: 30rpx;
-	background: #fff url('../../images/xiangyou1.png') no-repeat 98% 50% / auto 36rpx;
+	/* background: #fff url('../../images/xiangyou1.png') no-repeat 98% 50% / auto 36rpx; */
+}
+.my-item text{
+  width: 300rpx;
+}
+.xiangyou{
+  display: flex;
+  height: 40rpx;
+  width: 80rpx;
+  padding-left: 75%;
+  padding-top: 3rpx;
 }
 .go-image{
     width: 100%;
