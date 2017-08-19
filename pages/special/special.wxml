@@ -18,9 +18,6 @@
 	  	</view>
   	  <view class="space-info">
   	  	<view class="space-title">{{spacedata.ParkName}}</view>
-  	  	<view class="space-tags">
-  	  		<text wx:for="{{spacedata.TagIDs}}" wx:key="*this">{{item}}</text>
-  	  	</view>
   	  	<view class="space-list">
   	  		<view class="space-item">
   	  			<text class="text-left">机构名称：</text>
@@ -30,7 +27,7 @@
   	  			<text class="text-left">机构电话：</text>
   	  			<text class="text-right">{{spacedata.phone}}</text>
   	  		</view>
-          <view class="space-item">
+          	<view class="space-item">
   	  			<text class="text-left">客服电话：</text>
   	  			<text class="text-right">{{spacedata.phone}}</text>
   	  		</view>
@@ -43,34 +40,21 @@
 	  </view>
 
 	  <view class="space-block">
-	  	<view class="navbar">  
-        <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
-      </view>
-	  	<view class="space-block-content" hidden="{{currentTab!==0}}">
-	  		<image class="picture" src="../../images/1.png"></image>
-        <image class="picture" src="http://139.196.218.128/SjPark/UserFile/Files/Thumbnail/46932530-4bc8-48dc-bf10-1e5e39d254b8_750x470.png"></image>
-        <view class="space-passage">
-          {{spacedata.Summary}}
-        </view>
-	  	</view>
-      <view class="space-block-content" hidden="{{currentTab!==1}}">
-	  		<view class="space-passage">机构介绍</view>
-	  	</view>
-      <view class="space-block-content" hidden="{{currentTab!==2}}">
-	  		<view class="space-passage">资质荣誉</view>
-	  	</view>
-      <view class="space-block-content" hidden="{{currentTab!==3}}">
-	  		<view class="space-passage">客户评价</view>
+	  	<view class="space-block-title">服务内容</view>
+	  	<view class="space-block-content">
+	  		<view class="space-passage">{{spacedata.Summary}}</view>
 	  	</view>
 	  </view>
+
+    
 	</view>
-  <!-- 底部 -->
 	<view class="container-footer">
 		<button class="call-btn" bindtap="reserveHandle">
         <text>拨打电话</text>
     </button>
     <button class="kf_button" open-type="contact" session-from="weapp">
         <text>预约咨询</text>
-    </button>   
+    </button>
+     
 	</view>
 </view>

@@ -1,25 +1,115 @@
-.multiple-select{
-	padding: 20rpx;
-	display: flex;
-	flex-wrap: wrap;
+.header {
+	position: relative;
 }
-.multiple-select view{
-	flex: 0 0 25%;
-	max-width: 25%;
-	padding: 10rpx;
+.header .header-bg {
+	width: 100%;
+	display: block;
+	z-index: 1;
+}
+.header .header-content {
+	position: absolute;
+	z-index: 99;
+	top: 0;
+	width: 100%;
+
+}
+.header-content .no-logined {
+	padding-top: 74rpx;
+	text-align: center;
+	/*display: none;*/
+}
+ .header-content .no-logined text {
+	font-size: 60rpx;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 52rpx;
+	display: block;
+	text-shadow: 0rpx 8rpx 8rpx #ffac11;
+}
+.header-content .no-logined .login-btn {
+	font-size: 30rpx;
+	width: 228rpx;
+	height: 60rpx;
+	line-height: 60rpx;
+	text-align: center;
+	margin: auto;
+	color: #fff;
+	border: 1rpx solid #fff;
+	border-radius: 10rpx;
 	box-sizing: border-box;
 }
-.multiple-select text{
-	display: block;
-	border: 1rpx solid #ddd;
-	line-height: 66rpx;
-	color: #666;
-	font-size: 28rpx;
+
+.header-content .logined {
+	padding-top: 50rpx;
 	text-align: center;
-	border-radius: 4rpx;
 }
-.multiple-select text.active{
-	background: #f7982a;
+
+.header-content .logined .line-first {
+	font-size: 30rpx;
 	color: #fff;
-	border-color: #f7982a;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 30rpx;
+	display: block;
+}
+.header-content .logined .line-second {
+	font-size: 60rpx;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 52rpx;
+	display: block;
+	text-shadow: 0rpx 8rpx 8rpx #ffac11;
+}
+.header-content .logined .line-third {
+	font-size: 30rpx;
+	color: #fff;
+	margin: auto;
+	text-align: center;
+	display: block;
+	opacity: 0.6;
+}
+
+.list {
+	padding-left: 0rpx;
+	position: relative;
+}
+.list .list-item {
+	border-bottom: 1px solid #e6e6e6;
+	font-size: 0;
+	padding: 40rpx 0;
+	position: relative;
+}
+.list .list-item .item-icon {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 45rpx;
+	margin-right: 30rpx;
+	vertical-align: middle;
+  padding-left: 20rpx;
+}
+.list .list-item .item-text {
+	display: inline-block;
+	margin-top: 10rpx;
+	vertical-align: middle;
+}
+.list .list-item .item-text .line-first {
+	display: block;
+	color: #333;
+	font-size: 36rpx;
+	margin-bottom: 20rpx;
+}
+.list .list-item .item-text .line-second {
+	color: #ccc;
+	font-size: 28rpx;
+}
+.list .list-item .item-arrow {
+	width: 15rpx;
+	height: 28rpx;
+	vertical-align: middle;
+	position: absolute;
+	right: 40rpx;
+	top:50%;
+	margin-top: -14rpx;
 }

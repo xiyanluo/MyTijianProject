@@ -13,7 +13,9 @@
     "pages/addr/addr",
     "pages/cart/cart",
     "pages/orders/orders",
-    "pages/orderList/orderList"
+    "pages/orderList/orderList",
+    "pages/spaceheal/spaceheal",
+    "pages/special/special"
   ],
   "window":{
     "backgroundTextStyle":"white",

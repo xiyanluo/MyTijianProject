@@ -20,6 +20,7 @@
 	<view class="my-reserve-list">
     <view class="my-item" bindtap="goTo">
 			<text>{{actTxt}}</text>
+      <image class="xiangyou" src="../../images/xiangyou1.png"></image>
 	  </view>
   <navigator class="my-reserve-item" wx:for="{{newsList}}" wx:key="{{item.id }}" url="../activitydetail/activitydetail?id={{item.id}}">				
         <view class="my-reserve-img">
