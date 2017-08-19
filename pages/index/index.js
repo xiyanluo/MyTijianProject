@@ -61,7 +61,7 @@ Page({
         {
           'icon':'../../images/6.png',
           'text':'团体体检',
-          'url':'../space/space',
+          'url':'../property/property',
           'type': 'navigate'
         },
         {
@@ -92,7 +92,7 @@ Page({
         {
           'icon': '../../images/9.png',
           'text': '特别服务',
-          'url': '../space/space',
+          'url': '../special/special',
           'type': 'navigate'
         },
         {
