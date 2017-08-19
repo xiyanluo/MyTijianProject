@@ -1,7 +1,7 @@
 .order-tab{ margin-top: 20rpx; }
 .ord-item button{ line-height: 60rpx; padding: 0 24rpx; }
 .order-list{ margin-bottom: 20rpx;}
-
+.nodata{margin:0 auto;text-align:center;margin-top:260rpx;}
 page { font: 14px/1.5 'Microsoft Yahei', Arial, sans-serif; color: #666; background: #f3f3f3; } 
 .container { display: flex; flex-direction: column; } 
 .main { padding: 20rpx; } 
@@ -17,8 +17,9 @@ input { font-family: 'Microsoft Yahei', Arial, sans-serif; }
 .ord-item .pay-btn { background: #e64340; color: #fff; } 
 .ord-item .pro-price { text-align: right; } 
 .ord-item .pro-price .price { font-size: 32rpx; } 
-.outher-info { display: flex; padding:5rpx 0; } 
-.outher-info .ot-intro { flex: 1; text-align: right; } 
+.outher-info { float: left; padding:5rpx 0; } 
+.outher-info .state{color: #12b7f5; }
+.outher-info .ot-intro {display: block;text-align:left; } 
 
 /*浮动*/
 .clearfix { zoom: 1; } 
@@ -168,7 +169,7 @@ input { font-family: 'Microsoft Yahei', Arial, sans-serif; }
 
 /*选项卡*/
 .swiper-tab { height: 90rpx; line-height: 90rpx; white-space: nowrap; background: #fff; border-bottom:1px solid #f7f7f7; } 
-.swiper-tab-list { display: inline-block; width: 25%; height: 90rpx; position: relative; text-align: center; font-size: 28rpx; box-sizing: border-box; border-bottom: 6rpx solid transparent; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } 
+.swiper-tab-list { display: inline-block; width: 33%; height: 90rpx; position: relative; text-align: center; font-size: 28rpx; box-sizing: border-box; border-bottom: 6rpx solid transparent; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } 
 .on-1 { color: #a00b04; border-bottom-color: #a00b04; } 
 .on-2 { color: #a15605; border-bottom-color: #a15605; } 
 .on-3 { color: #a07d05; border-bottom-color: #a07d05; } 

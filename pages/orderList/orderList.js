@@ -201,7 +201,7 @@ Page({
 	 * 查询已完成订单
 	 */
 	getFinishOrder() {
-		
+
 		var that = this;
 		let openId = this.data.openId; // 获取openId
 		if(openId != null & openId != undefined) {　　　　　　　　
@@ -250,8 +250,7 @@ Page({
 		}
 	},
 
-
-   /**
+	/**
 	 * 查询已付款订单
 	 */
 	getAlreadyOrder() {
@@ -311,15 +310,83 @@ Page({
 		} else if(e.detail.current == 1) {
 			this.getAlreadyOrder();
 		} else if(e.detail.current == 2) {
-			this.getWaitOrder();
-		} else if(e.detail.current == 3) {
 			this.getFinishOrder();
-		}
+		} 
 		that.setData({
 			currentTab: e.detail.current
 		});
 
 	},
+
+	toTuiKuan(e) {
+		
+		wx.request({
+				url: servsers + '/khtj/json/base/tabPayinfo/escOrder',
+				data: {
+					eqId: e.currentTarget.id
+				},
+				success: function(e) {
+					if(e.data.status == 200) {
+						wx.showToast({
+						title: '退款成功,等待审核',
+						icon: 'success',
+						duration: 1200
+					})
+					} else {
+						wx.showToast({
+						title: '退款失败',
+						icon: 'success',
+						duration: 1200
+					})
+					}
+
+				},
+
+				fail: function(e) {
+					wx.showToast({
+						title: '退款失败',
+						icon: 'fail',
+						duration: 1200
+					})
+				}
+
+			})
+	},
+	toConfim(e) {
+		
+		wx.request({
+				url: servsers + '/khtj/json/base/tabPayinfo/finshOrder',
+				data: {
+					eqId: e.currentTarget.id
+				},
+				success: function(e) {
+					if(e.data.status == 200) {
+						wx.showToast({
+						title: '确认成功',
+						icon: 'success',
+						duration: 1200
+					})
+					} else {
+						wx.showToast({
+						title: '确认失败',
+						icon: 'success',
+						duration: 1200
+					})
+					}
+					
+				},
+
+				fail: function(e) {
+					wx.showToast({
+						title: '确认失败',
+						icon: 'fail',
+						duration: 1200
+					})
+				}
+
+			})
+	},
+
 	/*** 点击tab切换 */
 	swichNav: function(e) {
 		var that = this;
