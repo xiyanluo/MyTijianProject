@@ -86,8 +86,8 @@ imageUrl: imageUrl,
         success: function (e) {
           var datas = e.data.result;
           for (var i = 0; i < datas.length; i++) {
-            datas[i].title = datas[i].title.substring(0, 10);
-            datas[i].depict = datas[i].depict.substring(0, 16) + "...";
+            datas[i].title = datas[i].title.substring(0, 18);
+            datas[i].depict = datas[i].depict.substring(0, 20) + "...";
           }
           that.setData({
             servicelist: e.data.result
@@ -120,8 +120,8 @@ imageUrl: imageUrl,
         success: function (e) {
           var datas = e.data.result;
           for (var i = 0; i < datas.length; i++) {
-            datas[i].title = datas[i].title.substring(0, 10);
-            datas[i].depict = datas[i].depict.substring(0, 16) + "...";
+            datas[i].title = datas[i].title.substring(0, 18);
+            datas[i].depict = datas[i].depict.substring(0, 20) + "...";
           }
 
           that.setData({
@@ -225,8 +225,8 @@ imageUrl: imageUrl,
           } else {
             var datas = e.data.result;
             for (var i = 0; i < datas.length; i++) {
-              datas[i].title = datas[i].title.substring(0, 10);
-              datas[i].depict = datas[i].depict.substring(0, 16) + "...";
+              datas[i].title = datas[i].title.substring(0, 18);
+              datas[i].depict = datas[i].depict.substring(0,20) + "...";
             }
             that.setData({
               servicelist: that.data.servicelist.concat(e.data.result),
