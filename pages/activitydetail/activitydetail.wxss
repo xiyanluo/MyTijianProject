@@ -1,4 +1,5 @@
 @import '../space/space.wxss';
+@import "/wxParse/wxParse.wxss";
 .halfwidth-item{
 	width: 50%;
 	display: inline-block;
