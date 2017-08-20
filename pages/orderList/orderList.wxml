@@ -5,7 +5,6 @@
     <view class="swiper-tab-list {{currentTab==2 ? 'on bor-16' : ''}}" data-current="2" bindtap="swichNav">已完成</view>
   </scroll-view>
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" bindchange="bindChange" style="height: {{wHeight - 46}}px">
-
     <swiper-item>
       <scroll-view scroll-y class="m-project">
         <view class="order-tab" wx:if="{{orderList.length != 0}}">
@@ -31,57 +30,32 @@
                 </view>
               </view>
             </view>
+             <view class="ord-item">
+              <view class="con">
+                <view class="outher-info">
+                  <text>当前状态：</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==1}}">已付款</text>
+                  <text class="ot-intro yellow ft-w" wx:if="{{item.state ==4}}">退款中</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==5}}">已退款</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==6}}">已完成</text>
+                </view>
+              </view>
+            </view>
             <view class="ord-item" >
               <view class="con tr" wx:if="{{item.state ==0}}">
-                <view class="outher-info">
-                  <text class="state">待发货</text>
-                </view>
                 <button size="mini" class="cancel-btn">取消订单</button>
                 <button size="mini" class="pay-btn" >立即支付</button>
               </view>
-              
               <view class="con tr" wx:if="{{item.state == 1}}">
-              <view class="outher-info">
-                  <text class="state">已付款</text>
-                </view>
                 <button size="mini" class="cancel-btn" bindtap="toTuiKuan" id="{{item.id}}">申请退款</button>
                 <button size="mini" class="pay-btn" bindtap="toConfim" id="{{item.id}}">确认收货</button>
-              </view>
-              
-              <view class="con" wx:if="{{item.state ==2}}">
-                <view class="outher-info">
-                  <text class="state">已关闭</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==3}}">
-                <view class="outher-info">
-                  <text class="state">支付失败</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==4}}">
-                <view class="outher-info">
-                  <text class="state">退款中</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==5}}">
-                <view class="outher-info">
-                  <text class="state">已退款</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==6}}">
-                <view class="outher-info">
-                  <text class="state">已完成</text>
-                </view>
-              </view>
-              
-              
-              
+              </view>      
             </view>
           </view> 
           </view> 
-          <view class="nodata" wx:if="{{orderList.length == 0}}">
-          <text >未获取到订单数据</text>
-          </view>
+          <!-- <view class="nodata" wx:if="{{orderList.length == 0}}">
+            <text >未获取到订单数据</text>
+          </view> -->
        </scroll-view>
     
     </swiper-item>
@@ -108,57 +82,33 @@
                 </view>
               </view>
             </view>
+            <view class="ord-item">
+              <view class="con">
+                <view class="outher-info">
+                  <text>当前状态：</text>
+                              <text class="ot-intro green ft-w" wx:if="{{item.state ==1}}">已付款</text>
+                  <text class="ot-intro yellow ft-w" wx:if="{{item.state ==4}}">退款中</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==5}}">已退款</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==6}}">已完成</text>
+                </view>
+              </view>
+            </view>
             <view class="ord-item" >
               <view class="con tr" wx:if="{{item.state ==0}}">
-                <view class="outher-info">
-                  <text class="state">待发货</text>
-                </view>
                 <button size="mini" class="cancel-btn">取消订单</button>
                 <button size="mini" class="pay-btn">立即支付</button>
               </view>
               
               <view class="con tr" wx:if="{{item.state == 1}}">
-              <view class="outher-info">
-                  <text class="state">已付款</text>
-                </view>
                 <button size="mini" class="cancel-btn" bindtap="toTuiKuan" id="{{item.id}}">申请退款</button>
                 <button size="mini" class="pay-btn" bindtap="toConfim" id="{{item.id}}">确认收货</button>
               </view>
-              
-              <view class="con" wx:if="{{item.state ==2}}">
-                <view class="outher-info">
-                  <text class="state">已关闭</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==3}}">
-                <view class="outher-info">
-                  <text class="state">支付失败</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==4}}">
-                <view class="outher-info">
-                  <text class="state">退款中</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==5}}">
-                <view class="outher-info">
-                  <text class="state">已退款</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==6}}">
-                <view class="outher-info">
-                  <text class="state">已完成</text>
-                </view>
-              </view>
-              
-              
-              
             </view>
           </view> 
           </view> 
-          <view class="nodata" wx:if="{{orderList.length == 0}}">
-          <text >未获取到订单数据</text>
-          </view>
+          <!-- <view class="nodata" wx:if="{{orderList.length == 0}}">
+           <text >未获取到订单数据</text>
+          </view> -->
        </scroll-view>
     </swiper-item>
 
@@ -186,57 +136,29 @@
                 </view>
               </view>
             </view>
+            <view class="ord-item">
+              <view class="con">
+                <view class="outher-info">
+                  <text>当前状态：</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==1}}">已付款</text>
+                  <text class="ot-intro yellow ft-w" wx:if="{{item.state ==4}}">退款中</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==5}}">已退款</text>
+                  <text class="ot-intro green ft-w" wx:if="{{item.state ==6}}">已完成</text>
+                </view>
+              </view>
+            </view>
             <view class="ord-item" >
               <view class="con tr" wx:if="{{item.state ==0}}">
-                <view class="outher-info">
-                  <text class="state">待发货</text>
-                </view>
                 <button size="mini" class="cancel-btn">取消订单</button>
                 <button size="mini" class="pay-btn">立即支付</button>
-              </view>
-              
+              </view>         
               <view class="con tr" wx:if="{{item.state == 1}}">
-              <view class="outher-info">
-                  <text class="state">已付款</text>
-                </view>
                 <button size="mini" class="cancel-btn" bindtap="toTuiKuan" id="{{item.id}}">申请退款</button>
                 <button size="mini" class="pay-btn" bindtap="toConfim" id="{{item.id}}">确认收货</button>
-              </view>
-              
-              <view class="con" wx:if="{{item.state ==2}}">
-                <view class="outher-info">
-                  <text class="state">已关闭</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==3}}">
-                <view class="outher-info">
-                  <text class="state">支付失败</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==4}}">
-                <view class="outher-info">
-                  <text class="state">退款中</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==5}}">
-                <view class="outher-info">
-                  <text class="state">已退款</text>
-                </view>
-              </view>
-              <view class="con" wx:if="{{item.state ==6}}">
-                <view class="outher-info">
-                  <text class="state">已完成</text>
-                </view>
-              </view>
-              
-              
-              
+              </view>            
             </view>
           </view> 
           </view> 
-          <view class="nodata" wx:if="{{orderList.length == 0}}">
-          <text >未获取到订单数据</text>
-          </view>
        </scroll-view>
     </swiper-item>
   </swiper>
