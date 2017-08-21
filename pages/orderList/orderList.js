@@ -35,7 +35,6 @@ Page({
 							code: res.code
 						},
 						success: function(res) {
-							console.info("登录成功返回的openId：" + res.data.result);
 							that.setData({
 								openId: res.data.result,
 							});
@@ -114,7 +113,7 @@ Page({
 				success: function(e) {
 					if(e.data.result.length == 0) {
 						wx.showToast({
-							title: '无更多数据',
+              title: '未获取到订单',
 							icon: 'success',
 							duration: 1200
 						})
@@ -145,57 +144,6 @@ Page({
 		}
 	},
 
-	/**
-	 * 查询待付款订单
-	 */
-	getWaitOrder() {
-		var that = this;
-		let openId = this.data.openId; // 获取openId
-		if(openId != null & openId != undefined) {　　　　　　　　
-
-			wx.request({
-				url: servsers + '/khtj/json/base/tabPayinfo/queryDf',
-				data: {
-					page: that.data.ye,
-					rows: 10,
-					eqOpenid: openId
-				},
-				success: function(e) {
-					if(e.data.result.length == 0) {
-						that.setData({
-							orderList: [],
-						});
-						wx.showToast({
-							title: '无更多数据',
-							icon: 'success',
-							duration: 1200
-						})
-					} else {
-						var datas = e.data.result;
-						that.setData({
-							orderList: e.data.result,
-						});
-					}
-
-				},
-
-				fail: function(e) {
-					wx.showToast({
-						title: '获取数据失败',
-						icon: 'fail',
-						duration: 1200
-					})
-				}
-
-			})
-		} else {
-			wx.showToast({
-				title: '获取用户openId失败',
-				icon: 'fail',
-				duration: 1200
-			})
-		}
-	},
 
 	/**
 	 * 查询已完成订单
@@ -219,7 +167,7 @@ Page({
 							orderList: [],
 						});
 						wx.showToast({
-							title: '无更多数据',
+              title: '未获取到订单',
 							icon: 'success',
 							duration: 1200
 						})
@@ -271,7 +219,7 @@ Page({
 							orderList: [],
 						});
 						wx.showToast({
-							title: '无更多数据',
+              title: '未获取到订单',
 							icon: 'success',
 							duration: 1200
 						})
@@ -319,72 +267,85 @@ Page({
 	},
 
 	toTuiKuan(e) {
-		
-		wx.request({
-				url: servsers + '/khtj/json/base/tabPayinfo/escOrder',
-				data: {
-					eqId: e.currentTarget.id
-				},
-				success: function(e) {
-					if(e.data.status == 200) {
-						wx.showToast({
-						title: '退款成功,等待审核',
-						icon: 'success',
-						duration: 1200
-					})
-					} else {
-						wx.showToast({
-						title: '退款失败',
-						icon: 'success',
-						duration: 1200
-					})
-					}
+    wx.showModal({
+      title: '提示',
+      content: '确认要退款吗？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: servsers + '/khtj/json/base/tabPayinfo/escOrder',
+            data: {
+              eqId: e.currentTarget.id
+            },
+            success: function (e) {
+              if (e.data.status == 200) {
+                wx.showToast({
+                  title: '退款成功,等待审核',
+                  icon: 'success',
+                  duration: 1200
+                })
+              } else {
+                wx.showToast({
+                  title: '退款失败',
+                  icon: 'success',
+                  duration: 1200
+                })
+              }
 
-				},
+            },
+            fail: function (e) {
+              wx.showToast({
+                title: '退款失败',
+                icon: 'fail',
+                duration: 1200
+              })
+            }
 
-				fail: function(e) {
-					wx.showToast({
-						title: '退款失败',
-						icon: 'fail',
-						duration: 1200
-					})
-				}
-
-			})
+          })
+        }
+      }
+    })
 	},
 	toConfim(e) {
-		
-		wx.request({
-				url: servsers + '/khtj/json/base/tabPayinfo/finshOrder',
-				data: {
-					eqId: e.currentTarget.id
-				},
-				success: function(e) {
-					if(e.data.status == 200) {
-						wx.showToast({
-						title: '确认成功',
-						icon: 'success',
-						duration: 1200
-					})
-					} else {
-						wx.showToast({
-						title: '确认失败',
-						icon: 'success',
-						duration: 1200
-					})
-					}
-					
-				},
+    wx.showModal({
+      title: '提示',
+      content: '确认要完成该订单？',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: servsers + '/khtj/json/base/tabPayinfo/finshOrder',
+            data: {
+              eqId: e.currentTarget.id
+            },
+            success: function (e) {
+              if (e.data.status == 200) {
+                wx.showToast({
+                  title: '确认成功',
+                  icon: 'success',
+                  duration: 1200
+                })
+              } else {
+                wx.showToast({
+                  title: '确认失败',
+                  icon: 'success',
+                  duration: 1200
+                })
+              }
 
-				fail: function(e) {
-					wx.showToast({
-						title: '确认失败',
-						icon: 'fail',
-						duration: 1200
-					})
-				}
+            },
 
-			})
+            fail: function (e) {
+              wx.showToast({
+                title: '确认失败',
+                icon: 'fail',
+                duration: 1200
+              })
+            }
+
+          })
+        }
+      }
+    })
 	},
 
 	/*** 点击tab切换 */

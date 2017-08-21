@@ -148,8 +148,8 @@ Page({
 				body: '个人体检套餐交费'
 			},
 			success: function(res) {
+        wx.hideToast();
 				if(res.data.status != 200) {
-					wx.hideToast();
 					wx.showModal({
 						title: '提示',
 						content: res.data.message,
@@ -164,12 +164,14 @@ Page({
 					'signType': res.data.signType,
 					'paySign': res.data.paySign,
 					'success': function(succ) {
-
+            wx.redirectTo({
+              url: '../orderList/orderList'
+            });
 					},
 					'fail': function(err) {
 						wx.showModal({
 							title: '提示',
-							content: '支付失败',
+							content: '支付失败,请重新付款',
 							showCancel: false
 						});
 					},

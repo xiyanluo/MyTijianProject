@@ -1,4 +1,5 @@
 var app = getApp();
+var WxParse = require('../../wxParse/wxParse.js');
 var servsers = getApp().globalData.baseUrl;
 var imageUrl = getApp().globalData.imageUrl;
 Page({
@@ -7,8 +8,10 @@ Page({
     servsers: servsers,
     activitydata:{},
     spaceimgs:[],
+    msgConts:'',
     imageUrl: imageUrl,
-    currentIndex:1
+    currentIndex:1,
+    showLoading:false
   },
   onLoad: function (options) {
     var that = this
@@ -29,7 +32,13 @@ Page({
         that.setData({
           activitydata: res.data.result,
           spaceimgs: list,
+          msgConts: WxParse.wxParse('msgConts', 'html', res.data.result.cnts, that, 5)
         })
+      },
+      complete: function (comp) {
+        that.setData({
+          showLoading: true
+        });
       }
     })
 
