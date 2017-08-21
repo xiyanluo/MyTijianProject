@@ -13,12 +13,7 @@
 	margin-right: 6rpx;
   color: #888;
 }
-.icon-time:before{
-	background: url('../../images/shizhong.png') no-repeat 50% 50% / 100% auto;
-}
-.icon-xinxi:before{
-	background: url('../../images/xinxi.png') no-repeat 50% 50% / 100% auto;
-}
+
 
 .conference-item{
 	padding: 20rpx;

@@ -5,6 +5,7 @@ var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
   	servsers: servsers,
+  	showLoading: false,
     sortindex:0,  //排序索引
     sortid:null,  //排序id
     activitylist:[], //会议室列表列表
@@ -35,6 +36,11 @@ Page({
           activitylist:e.data.result
         })
       },
+      complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
       fail: function (e) {
         wx.showModal({
           title: '提示',
@@ -83,6 +89,11 @@ Page({
           activitylist:that.data.activitylist.concat(e.data.result)
         })
       },
+      complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
       fail: function (e) {
         wx.showModal({
           title: '提示',

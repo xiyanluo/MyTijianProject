@@ -6,283 +6,290 @@ var servsers = getApp().globalData.baseUrl;
 var imageUrl = getApp().globalData.imageUrl;
 Page({
 
-  data: {
-imageUrl: imageUrl,
-    showtab: 0,  //顶部选项卡索引
+	data: {
+		imageUrl: imageUrl,
+		showtab: 0, //顶部选项卡索引
+		showLoading: false,
+		showtabtype: 'A', //选中类型
 
-    showtabtype: 'A', //选中类型
+		tabnav: {}, //顶部选项卡数据
+		ye: 1,
+		servicelist: [], //套餐列表
 
-    tabnav: {},  //顶部选项卡数据
-    ye: 1,
-    servicelist: [], //套餐列表
+		scrolltop: null, //滚动位置
 
-    scrolltop: null, //滚动位置
+		page: 0, //分页
 
-    page: 0,  //分页
+		servsers: servsers,
+		imageUrl: imageUrl,
+		loading: false,
 
-    servsers: servsers,
-    imageUrl: imageUrl,
-    loading: false,
+		tabnav: {
 
-    tabnav: {
+			tabnum: 2,
 
-      tabnum: 2,
+			tabitem: [
 
-      tabitem: [
+				{
 
-        {
+					"id": 0,
 
-          "id": 0,
+					"type": "A",
 
-          "type": "A",
+					"text": "男性"
 
-          "text": "男性"
+				},
 
-        },
+				{
 
-        {
+					"id": 1,
 
-          "id": 1,
+					"type": "B",
 
-          "type": "B",
+					"text": "女性"
 
-          "text": "女性"
+				}
 
-        }
+			]
 
-      ]
+		}
 
-    }
+	},
 
-  },
+	onLoad: function() { //加载数据渲染页面
 
-  onLoad: function () { //加载数据渲染页面
+		this.fetchServiceData();
 
-    this.fetchServiceData();
+	},
 
-  },
+	fetchServiceData: function() {
+		var that = this
+		const newlist = [];
 
-  fetchServiceData: function () {
-    var that = this
-    const newlist = [];
+		if(this.data.showtabtype == 'A') { //男性加载入口
 
-    if (this.data.showtabtype == 'A') {//男性加载入口
+			wx.request({
 
+				url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
 
-      wx.request({
+				data: {
 
-        url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
+					page: 1,
 
-        data: {
+					rows: 10,
 
-          page: 1,
+					ifGender: 1
 
-          rows: 10,
+				},
 
-          ifGender: 1
+				success: function(e) {
+					var datas = e.data.result;
+					for(var i = 0; i < datas.length; i++) {
+						datas[i].title = datas[i].title.substring(0, 18);
+						datas[i].depict = datas[i].depict.substring(0, 20) + "...";
+					}
+					that.setData({
+						servicelist: e.data.result
+					});
+				},
+				complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
+				fail: function(e) {}
 
-        },
+			})
 
-        success: function (e) {
-          var datas = e.data.result;
-          for (var i = 0; i < datas.length; i++) {
-            datas[i].title = datas[i].title.substring(0, 18);
-            datas[i].depict = datas[i].depict.substring(0, 20) + "...";
-          }
-          that.setData({
-            servicelist: e.data.result
-          });
-        },
-        fail: function (e) {
-        }
+		} else if(this.data.showtabtype == 'B') { //女性加载入口
 
-      })
+			wx.request({
 
+				url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
 
+				data: {
 
-    } else if (this.data.showtabtype == 'B') {//女性加载入口
+					page: 1,
 
+					rows: 10,
 
-      wx.request({
+					ifGender: 2
 
-        url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
+				},
 
-        data: {
+				success: function(e) {
+					var datas = e.data.result;
+					for(var i = 0; i < datas.length; i++) {
+						datas[i].title = datas[i].title.substring(0, 18);
+						datas[i].depict = datas[i].depict.substring(0, 20) + "...";
+					}
 
-          page: 1,
+					that.setData({
 
-          rows: 10,
+						servicelist: e.data.result
 
-          ifGender: 2
+					});
+				},
+				complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
+				fail: function(e) {
 
-        },
+				}
 
-        success: function (e) {
-          var datas = e.data.result;
-          for (var i = 0; i < datas.length; i++) {
-            datas[i].title = datas[i].title.substring(0, 18);
-            datas[i].depict = datas[i].depict.substring(0, 20) + "...";
-          }
+			})
 
-          that.setData({
+		}
 
-            servicelist: e.data.result
+	},
 
-          });
-        },
+	setTab: function(e) { //选项卡选中
 
-        fail: function (e) {
+		const edata = e.currentTarget.dataset;
 
-        }
+		this.setData({
 
-      })
+			showtab: edata.tabindex,
 
-    }
+			showtabtype: edata.type,
+			showLoading: false
 
+		});
+        this.fetchServiceData();
 
+	},
 
-  },
+	scrollHandle: function(e) { //滚动事件
 
-  setTab: function (e) { //选项卡选中
+		this.setData({
 
-    const edata = e.currentTarget.dataset;
+			scrolltop: e.detail.scrollTop
 
-    this.setData({
+		})
 
-      showtab: edata.tabindex,
+	},
 
-      showtabtype: edata.type
+	goToTop: function() { //回到顶部
 
-    });
+		this.setData({
 
-    this.fetchServiceData();
+			scrolltop: 0
 
-  },
+		})
 
+	},
 
+	scrollLoading: function() { //滚动加载
 
-  scrollHandle: function (e) { //滚动事件
+		this.fetchServiceData();
 
-    this.setData({
+	},
 
-      scrolltop: e.detail.scrollTop
+	onPullDownRefresh: function() { //下拉刷新
+		this.onLoad();
+		wx.stopPullDownRefresh();
+	},
+	//触底上拉加载新内容
+	onReachBottom: function() {
+		var that = this
+		//每次进入 当前页++
+		that.setData({
+			page: ++that.data.ye,
+			loading: true
+		})
+		if(this.data.showtabtype == 'A') {
+			wx.request({
 
-    })
+				url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
 
-  },
+				data: {
 
-  goToTop: function () { //回到顶部
+					page: that.data.ye,
 
-    this.setData({
+					rows: 10,
 
-      scrolltop: 0
+					ifGender: 1
 
-    })
+				},
 
-  },
+				success: function(e) {
 
-  scrollLoading: function () { //滚动加载
+					if(e.data.result.length == 0) {
+						wx.showToast({
+							title: '无更多数据',
+							icon: 'success',
+							duration: 1200
+						})
+					} else {
+						var datas = e.data.result;
+						for(var i = 0; i < datas.length; i++) {
+							datas[i].title = datas[i].title.substring(0, 18);
+							datas[i].depict = datas[i].depict.substring(0, 20) + "...";
+						}
+						that.setData({
+							servicelist: that.data.servicelist.concat(e.data.result),
+						});
+					}
 
-    this.fetchServiceData();
+				},
+				complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
+				fail: function(e) {
 
-  },
+				}
 
-  onPullDownRefresh: function () { //下拉刷新
-    this.onLoad();
-    wx.stopPullDownRefresh();
-  },
-  //触底上拉加载新内容
-  onReachBottom: function () {
-    var that = this
-    //每次进入 当前页++
-    that.setData({
-      page: ++that.data.ye,
-      loading: true
-    })
-    if (this.data.showtabtype == 'A') {
-      wx.request({
+			})
+		} else {
+			wx.request({
 
-        url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
+				url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
 
-        data: {
+				data: {
 
-          page: that.data.ye,
+					page: that.data.ye,
 
-          rows: 10,
+					rows: 10,
 
-          ifGender: 1
+					ifGender: 2
 
-        },
+				},
 
-        success: function (e) {
+				success: function(e) {
+					if(e.data.result.length == 0) {
+						wx.showToast({
+							title: '无更多数据',
+							icon: 'success',
+							duration: 1200
+						})
+					} else {
+						var datas = e.data.result;
+						for(var i = 0; i < datas.length; i++) {
+							datas[i].title = datas[i].title.substring(0, 10);
+							datas[i].depict = datas[i].depict.substring(0, 16) + "...";
+						}
+						that.setData({
+							servicelist: that.data.servicelist.concat(e.data.result),
+						});
+					}
 
-          if (e.data.result.length == 0) {
-            wx.showToast({
-              title: '无更多数据',
-              icon: 'success',
-              duration: 1200
-            })
-          } else {
-            var datas = e.data.result;
-            for (var i = 0; i < datas.length; i++) {
-              datas[i].title = datas[i].title.substring(0, 18);
-              datas[i].depict = datas[i].depict.substring(0,20) + "...";
-            }
-            that.setData({
-              servicelist: that.data.servicelist.concat(e.data.result),
-            });
-          }
+				},
+				complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
+				fail: function(e) {
 
-        },
+				}
 
-        fail: function (e) {
+			})
+		}
 
-
-        }
-
-      })
-    } else {
-      wx.request({
-
-        url: servsers + '/khtj/json/base/tabPersonalPackage/queryList',
-
-        data: {
-
-          page: that.data.ye,
-
-          rows: 10,
-
-          ifGender: 2
-
-        },
-
-        success: function (e) {
-          if (e.data.result.length == 0) {
-            wx.showToast({
-              title: '无更多数据',
-              icon: 'success',
-              duration: 1200
-            })
-          } else {
-            var datas = e.data.result;
-            for (var i = 0; i < datas.length; i++) {
-              datas[i].title = datas[i].title.substring(0, 10);
-              datas[i].depict = datas[i].depict.substring(0, 16) + "...";
-            }
-            that.setData({
-              servicelist: that.data.servicelist.concat(e.data.result),
-            });
-          }
-
-        },
-
-        fail: function (e) {
-
-        }
-
-      })
-    }
-
-  }
+	}
 
 })

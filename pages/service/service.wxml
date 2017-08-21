@@ -3,6 +3,7 @@
 				<text wx:for="{{tabnav.tabitem}}" bindtap="setTab" class="{{showtab==index?'active':''}}" data-tabindex="{{index}}" data-type="{{item.type}}" wx:key="{{item.type}}">{{item.text}}</text>
 				<view class="tab-line" style="width:{{100/tabnav.tabnum}}%;transform:translateX({{100*showtab}}%);"></view>
 	</view>
+	<loading hidden="{{showLoading}}">正在加载</loading>
 	<block class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="service-list">
 			<navigator class="service-item" wx:for="{{servicelist}}" wx:key="{{item.id}}" url="../servicedetail/servicedetail?id={{item.id}}">
