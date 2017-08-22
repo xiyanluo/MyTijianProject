@@ -52,7 +52,7 @@
 	line-height: 2;
 }
 .space-tags{
-	margin-bottom: 10rpx;
+	margin-bottom: 15rpx;
 }
 .space-tags text{
 	padding: 6rpx 16rpx;

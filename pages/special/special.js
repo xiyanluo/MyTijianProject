@@ -130,7 +130,14 @@ Page({
       }
     })
   },
-  
+  onShareAppMessage: function () {
+    var that = this
+    return {
+      title: '特别服务',
+      desc: '加入我们介绍',
+      path: '/pages/special/special'
+    }
+  },
   goApply: function(){
     wx.navigateTo({
       url: '../apply/apply'

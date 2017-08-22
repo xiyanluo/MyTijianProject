@@ -11,7 +11,7 @@ Page({
     imageUrl: imageUrl,
     loading: false,
     actTxt:'热门活动',
-    phone:'0551-63829889'
+    phone:''
   },
   onLoad:function(){
     //生命周期函数--监听页面加载
@@ -179,7 +179,7 @@ Page({
     return {
       title: '我要体检',
       desc: '体检就上康虹职业病体检中心,国内专业健康体检机构,在线购买体检套餐,在线预约咨询等',
-      path: 'pages/index/index'
+      path: '/pages/index/index'
     }
   }
 })

@@ -92,7 +92,7 @@ Page({
   reserveHandle: function (event) {
   	var that = this
     wx.makePhoneCall({
-      phoneNumber: that.data.speciallist.companyPhone, //此号码并非真实电话号码，仅用于测试
+      phoneNumber: that.data.speciallist.callphone, //此号码并非真实电话号码，仅用于测试
       success: function () {
         console.log("拨打电话成功！")
       },
@@ -149,9 +149,9 @@ Page({
   onShareAppMessage: function () {
   	var that = this
     return {
-      title: that.data.speciallist.companyName,
-      desc: that.data.speciallist.title,
-      path: 'pages/space/space'
+      title: '职业病体检',
+      desc: '服务内容、机构介绍、资质荣誉、客户评价',
+      path:  '/pages/space/space'
     }
   }
 })

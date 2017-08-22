@@ -124,7 +124,7 @@ Page({
   reserveHandle: function (event) {
   	var that = this
     wx.makePhoneCall({
-      phoneNumber: that.data.speciallist.companyPhone, //此号码并非真实电话号码，仅用于测试
+      phoneNumber: that.data.speciallist.callphone, //此号码并非真实电话号码，仅用于测试
       success: function () {
         console.log("拨打电话成功！")
       },
@@ -140,6 +140,14 @@ Page({
       current: imgs[e.currentTarget.dataset.index], // 当前显示图片的http链接
       urls: imgs // 需要预览的图片http链接列表
     })
+  },
+  onShareAppMessage: function () {
+    var that = this
+    return {
+      title: '健康体检',
+      desc: '服务内容、机构介绍、资质荣誉、客户评价',
+      path: '/pages/spaceheal/spaceheal'
+    }
   },
   navbarTap: function (e) {
     this.setData({

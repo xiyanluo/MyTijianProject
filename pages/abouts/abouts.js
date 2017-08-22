@@ -73,7 +73,7 @@ Page({
 	onShareAppMessage: function() {
 		return {
 			title: '关于我们',
-			path: 'pages/index/index'
+      path: '/pages/abouts/abouts'
 		}
 	}
 })
