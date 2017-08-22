@@ -1,3 +1,4 @@
+@import "/wxParse/wxParse.wxss";
 .space-content{
 	background: #f9f9f9;
 }
@@ -19,6 +20,10 @@
 }
 .space-banner{
 	position: relative;
+}
+.container_imge{
+    width:100%;
+    text-align: center;
 }
 .space-banner swiper{
 	width: 100%;

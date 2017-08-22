@@ -4,6 +4,7 @@ var servsers = getApp().globalData.baseUrl;
 var imageUrl = getApp().globalData.imageUrl;
 Page({
   data: {
+  	showLoading: false,
     currentIndex: 1,
   	servsers: servsers,
     imageUrl: imageUrl,
@@ -16,10 +17,18 @@ Page({
     colorValue: '#e64340',
     btntype: 0,
     spaceimgs:[],
-    phoneNumber: '13866145149'
+    phoneNumber: '0551-63829889'
   },
   onLoad: function (options) {
     var that = this
+    wx.getStorage({
+			key: 'iphonenew',
+			success(res) {
+				that.setData({
+					phoneNumber: res.data,
+				})
+			}
+		}),
   	wx.request({
       url: servsers+'/khtj/json/base/tabPersonalPackage/getDetails',
       data: {
@@ -39,7 +48,12 @@ Page({
           spaceimgs: list,
           msgTwo: WxParse.wxParse('msgTwo', 'html', res.data.result.cnts, that, 5)
         })
-      }
+      },
+      complete: function(comp) {
+					that.setData({
+						showLoading: true
+					});
+				},
     })
   },
   setCurrent: function (e) {  //当前图片索引

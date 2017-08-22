@@ -6,8 +6,9 @@ var servsers = getApp().globalData.baseUrl;
 var imageUrl = getApp().globalData.imageUrl;
 Page({
 	data: {
-		phone: '0551-6125398',
+		phone: '0551-63829889',
 		servsers: servsers,
+		iphone:'',
 		hidden: true,
 		showLoading: true,
 		question: {
@@ -16,7 +17,18 @@ Page({
 			detail: ''
 		}
 	},
-	onLoad: function() {},
+	onLoad: function() {
+		var that = this;
+		wx.getStorage({
+			key: 'iphonenew',
+			success(res) {
+				that.setData({
+					phone: res.data,
+				})
+			}
+		})
+		
+	},
 
 	questionSubmit: function() {
 		var self = this;

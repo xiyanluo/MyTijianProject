@@ -1,5 +1,7 @@
 <!--logs.wxml-->
+<import src="../../wxParse/wxParse.wxml"/> 
 <view class="container">
+<loading hidden="{{showLoading}}">正在加载</loading>
 	<view class="container-body space-content">
 	  <view class="space-top">
 	  	<view class="space-banner" bindtap="imgPreview">
@@ -17,26 +19,26 @@
 	  	  </view>
 	  	</view>
   	  <view class="space-info">
-  	  	<view class="space-title">{{spacedata.ParkName}}</view>
+  	  	<view class="space-title">{{speciallist.title}}</view>
   	  	<view class="space-tags">
-  	  		<text wx:for="{{spacedata.TagIDs}}" wx:key="*this">{{item}}</text>
+  	  		<text wx:for="{{tagList}}" wx:key="*this">{{item}}</text>
   	  	</view>
   	  	<view class="space-list">
   	  		<view class="space-item">
   	  			<text class="text-left">机构名称：</text>
-  	  			<text class="text-right">{{spacedata.companyName}}</text>
+  	  			<text class="text-right">{{speciallist.companyName}}</text>
   	  		</view>
   	  		<view class="space-item">
   	  			<text class="text-left">机构电话：</text>
-  	  			<text class="text-right">{{spacedata.phone}}</text>
+  	  			<text class="text-right">{{speciallist.companyPhone}}</text>
   	  		</view>
           <view class="space-item">
   	  			<text class="text-left">客服电话：</text>
-  	  			<text class="text-right">{{spacedata.phone}}</text>
+  	  			<text class="text-right">{{speciallist.callphone}}</text>
   	  		</view>
   	  		<view class="space-item">
   	  			<text class="text-left">机构地址：</text>
-  	  			<text class="text-right" data-address="{{spacedata.Address}}" data-latitude="{{spacedata.latitude}}" data-longitude="{{spacedata.longitude}}" bindtap="getAddress">{{spacedata.Address}}</text>
+  	  			<text class="text-right" data-address="{{speciallist.companyAddr}}" >{{speciallist.companyAddr}}</text>
   	  		</view>
   	  	</view>
   	  </view>
@@ -47,20 +49,27 @@
         <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
       </view>
 	  	<view class="space-block-content" hidden="{{currentTab!==0}}">
-	  		<image class="picture" src="../../images/1.png"></image>
-        <image class="picture" src="http://139.196.218.128/SjPark/UserFile/Files/Thumbnail/46932530-4bc8-48dc-bf10-1e5e39d254b8_750x470.png"></image>
+
+        <image class="picture" wx:for="{{serviceList}}" src="{{item}}" data-index="{{index}}" bindtap="imgPreviewS"></image>
+       
         <view class="space-passage">
-          {{spacedata.Summary}}
+        <template class="space-passage" is="wxParse" data="{{wxParseData:msgserviceInfo.nodes}}"/>
         </view>
 	  	</view>
       <view class="space-block-content" hidden="{{currentTab!==1}}">
-	  		<view class="space-passage">机构介绍</view>
+      <image class="picture" wx:for="{{companyList}}" src="{{item}}" bindtap="imgPreviewC"></image>
+     
+	  		<template class="space-passage" is="wxParse" data="{{wxParseData:msgcompanyInfo.nodes}}"/>
 	  	</view>
       <view class="space-block-content" hidden="{{currentTab!==2}}">
-	  		<view class="space-passage">资质荣誉</view>
+       <image class="picture" wx:for="{{honorList}}" src="{{item}}" bindtap="imgPreviewZ"></image>
+      
+	  		<template class="space-passage" is="wxParse" data="{{wxParseData:msghonorInfo.nodes}}"/>
 	  	</view>
       <view class="space-block-content" hidden="{{currentTab!==3}}">
-	  		<view class="space-passage">客户评价</view>
+      <image class="picture" wx:for="{{customList}}" src="{{item}}" bindtap="imgPreviewM"></image>
+     
+	  		<template class="space-passage" is="wxParse" data="{{wxParseData:msgcustomInfo.nodes}}"/>
 	  	</view>
 	  </view>
 	</view>

@@ -2,7 +2,7 @@
 <view class="navbar">  
   <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
 </view>  
-  
+  <loading hidden="{{showLoading}}">正在加载</loading>
 <!--首页-->  
 <view hidden="{{currentTab!==0}}">  
   <view class="ar_cont">
@@ -38,7 +38,7 @@
   <view class="ar_cont">
    <view class="title1" style="padding-top:10rpx;">合肥康虹（职业）健康体检中心</view>
    <view class="title2" style="padding-top:10rpx;">安徽省合肥市高新区创新大道2760号创新公寓商配A座3层C1（创新大道与云飞路东南角)</view>
-   <view class="title2" style="padding-top:10rpx;">0551-6125398</view>
+   <view class="title2" style="padding-top:10rpx;">{{message.callphone}}</view>
    <view class="title2" style="padding-top:10rpx;"><button type="default" bindtap="calling">拨打客服电话</button></view>
   </view>
 </view>  

@@ -1,5 +1,6 @@
 <import src="../../wxParse/wxParse.wxml"/> 
 <view class="container">
+<loading hidden="{{showLoading}}">正在加载</loading>
   <view class="pr-view-main">
     <swiper class="swiper-wrap" indicator-dots autoplay indicator-active-color="{{colorValue}}">
       <block wx:for="{{spaceimgs}}" wx:key="{{index}}">

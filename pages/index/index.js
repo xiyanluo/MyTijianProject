@@ -6,6 +6,7 @@ Page({
   data: {
     indexmenu:[],
     imgUrls: [],
+    showLoading: false,
     servsers: servsers,
     imageUrl: imageUrl,
     loading: false,
@@ -22,9 +23,15 @@ Page({
       data: {},
       success: function (e) {
         that.setData({
-          imgUrls: e.data.result
-        })
+          imgUrls: e.data.result,
+          phone:e.data.message
+        }),
+        wx.setStorage({
+        key: 'iphonenew',
+        data: e.data.message
+      })
       },
+      
       fail: function (e) {
       }
     })
@@ -45,6 +52,11 @@ Page({
           newsList: e.data.result
         })
       },
+      complete: function(comp) {
+				that.setData({
+					showLoading: true
+				});
+			},
       fail: function (e) {
       }
     })

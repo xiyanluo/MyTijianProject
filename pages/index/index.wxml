@@ -1,5 +1,6 @@
 <view class="container">
 <scroll-view  scroll-y="true"  class="page-body" bindscrolltolower="loadMore">
+<loading hidden="{{showLoading}}">正在加载</loading>
   <swiper class="index-banner" indicator-dots="{{true}}"
     autoplay="{{true}}" interval="{{4000}}" duration="{{1000}}">
     <block wx:for="{{imgUrls}}" wx:key="*this">

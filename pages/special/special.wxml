@@ -1,5 +1,7 @@
 <!--logs.wxml-->
+<import src="../../wxParse/wxParse.wxml"/> 
 <view class="container">
+<loading hidden="{{showLoading}}">正在加载</loading>
 	<view class="container-body space-content">
 	  <view class="space-top">
 	  	<view class="space-banner" bindtap="imgPreview">
@@ -17,23 +19,23 @@
 	  	  </view>
 	  	</view>
   	  <view class="space-info">
-  	  	<view class="space-title">{{spacedata.ParkName}}</view>
+  	  	<view class="space-title">{{speciallist.ParkName}}</view>
   	  	<view class="space-list">
   	  		<view class="space-item">
   	  			<text class="text-left">机构名称：</text>
-  	  			<text class="text-right">{{spacedata.companyName}}</text>
+  	  			<text class="text-right">{{speciallist.companyName}}</text>
   	  		</view>
   	  		<view class="space-item">
   	  			<text class="text-left">机构电话：</text>
-  	  			<text class="text-right">{{spacedata.phone}}</text>
+  	  			<text class="text-right">{{speciallist.companyPhone}}</text>
   	  		</view>
           	<view class="space-item">
   	  			<text class="text-left">客服电话：</text>
-  	  			<text class="text-right">{{spacedata.phone}}</text>
+  	  			<text class="text-right">{{speciallist.callphone}}</text>
   	  		</view>
   	  		<view class="space-item">
   	  			<text class="text-left">机构地址：</text>
-  	  			<text class="text-right" data-address="{{spacedata.Address}}" data-latitude="{{spacedata.latitude}}" data-longitude="{{spacedata.longitude}}" bindtap="getAddress">{{spacedata.Address}}</text>
+  	  			<text class="text-right" data-address="{{speciallist.companyAddr}}" >{{speciallist.companyAddr}}</text>
   	  		</view>
   	  	</view>
   	  </view>
@@ -42,7 +44,7 @@
 	  <view class="space-block">
 	  	<view class="space-block-title">服务内容</view>
 	  	<view class="space-block-content">
-	  		<view class="space-passage">{{spacedata.Summary}}</view>
+	  		<template class="space-passage" is="wxParse" data="{{wxParseData:msgTwo.nodes}}"/>
 	  	</view>
 	  </view>
 
