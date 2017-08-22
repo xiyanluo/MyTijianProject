@@ -303,7 +303,7 @@ Page({
 		var that = this;
 		wx.showModal({
 			title: '提示',
-			content: '确认要退款吗？',
+			content: '微信商户需收取0.6%手续费,确认要退款吗？',
 			success: function(res) {
 				if(res.confirm) {
 					wx.request({

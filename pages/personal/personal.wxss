@@ -1,0 +1,148 @@
+.question-text{
+	padding: 20rpx;
+	text-align: center;
+}
+.question-text text{
+	display: block;
+	color: #888;
+	font-size: 28rpx;
+}
+.question-text view{
+	font-size: 48rpx;
+	color: #f7982a;
+}
+.footer-tab{
+	display: flex;
+	width: 100%;
+	border-top: 1rpx solid #ddd;
+}
+.footer-tab .footer-tab-item{
+	flex: 1;
+	text-align: center;
+}
+
+.footer-tab-widthicon image{
+	width: 44rpx;
+	height: 44rpx;
+	display: block;
+	margin: 10rpx auto 0;
+}
+.footer-tab-item text{
+	font-size: 24rpx;
+	color: #888;
+}
+.footer-tab-item.active text{
+	color: #f7982a;
+}
+.tab{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.tab-nav{
+	height: 80rpx;
+	background: #fff;
+	border-bottom: 1rpx solid #ddd;
+	display: flex;
+	line-height: 79rpx;
+	position: relative;
+}
+.tab-nav text{
+	display: block;
+	flex: 1;
+	text-align: center;
+	width: 25%;
+}
+.tab-nav text.active{
+	color: #f7982a;
+}
+.tab-line{
+	position: absolute;
+	left: 0;
+	bottom: -1rpx;
+	height: 4rpx;
+	background: #f7982a;
+	transition: all 0.3s;
+}
+.tab-content{
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.question-list{
+	padding: 20rpx;
+}
+.question-item{
+	background: #fff;
+	margin-bottom: 20rpx;
+	border-bottom: 1rpx solid #ddd;
+}
+.question-item-q{
+	padding: 20rpx;
+	background: #cecece;
+	padding-left: 80rpx;
+	padding-right: 70rpx;
+	position: relative;
+	line-height: 1.2;
+	color: #fff;
+}
+.question-item-q:before{
+	content: '问';
+	display: block;
+	width: 50rpx;
+	height: 50rpx;
+	border-radius: 50%;
+	background: #f97c29;
+	font-size: 34rpx;
+	text-align: center;
+	line-height: 50rpx;
+	position: absolute;
+	left: 20rpx;
+	top: 14rpx;
+}
+
+.question-item-a{
+	padding: 0 20rpx;
+	position: relative;
+	line-height: 1.4;
+	color: #666;
+}
+.question-item-a.active{
+	background: #f7982a;
+}
+
+
+.question-item.active .question-item-q{
+	background: #f97c29;
+}
+
+.question-item.active .question-item-a{
+	-webkit-line-clamp: inherit;
+}
+
+.item{
+  padding: 15rpx;
+  height: 50rpx;
+}
+.service_selection { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap ;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  background: #fff;  
+  width: 100%;
+}  
+  
+.service_selection label {  
+  background: #f0f1ec;  
+  padding: 7px 8px;  
+  font-size: 13px;  
+  border-radius: 4px;  
+}  
+  
+.service_selection .is_checked {  
+  border: 1px solid #fe0002;  
+  color: #fe0002;  
+  background: #fff;  
+}  

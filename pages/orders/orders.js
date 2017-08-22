@@ -84,7 +84,7 @@ Page({
 		let that = this;
 		wx.showModal({
 			title: '提示',
-			content: '确认要支付吗？',
+      content: '确认要支付吗？',
 			success: function(res) {
 
 				if(res.confirm) {

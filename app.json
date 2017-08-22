@@ -15,7 +15,8 @@
     "pages/orders/orders",
     "pages/orderList/orderList",
     "pages/spaceheal/spaceheal",
-    "pages/special/special"
+    "pages/special/special",
+    "pages/personal/personal"
   ],
   "window":{
     "backgroundTextStyle":"white",

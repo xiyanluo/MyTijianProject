@@ -79,7 +79,7 @@ Page({
         {
           'icon': '../../images/icon_13.png',
           'text': '个人定制',
-          'url': '../question/question',
+          'url': '../personal/personal',
           'type': 'navigate'
         },
         {
