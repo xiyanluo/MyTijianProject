@@ -7,8 +7,17 @@ Page({
     name: '',
     phone: '',
     age: '',
+    gender: '',
     detail:'',//期待要求
     showLoading: true,
+    checkVals:'',
+    allGoodsdetail:'',
+    gxydetail:'',
+    xzbdetail:'',
+    tlbdetail:'',
+    qtdetail:'',
+    ycdetail:'',
+    ssdetail:'',
     allGoodsFilte: [
       { name: '心脏病', value: '0', checked: false },
       { name: '高血压', value: '1', checked: false },
@@ -110,8 +119,77 @@ Page({
       { name: '其他', value: '77', checked: false }
     ]
   },
+  checkbox:function(){
+    let self = this;
+    var vals = "";
+    for (let i = 0; i < self.data.allGoodsFilte.length; i++) {
+      if (self.data.allGoodsFilte[i].checked == true) {
+        vals += self.data.allGoodsFilte[i].value + ',';
+      }     
+    }
+    for (let i = 0; i < self.data.gxyList.length; i++) {
+      if (self.data.gxyList[i].checked == true) {
+        vals += self.data.gxyList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.xzbList.length; i++) {
+      if (self.data.xzbList[i].checked == true) {
+        vals += self.data.xzbList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.tlbList.length; i++) {
+      if (self.data.tlbList[i].checked == true) {
+        vals += self.data.tlbList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.qtList.length; i++) {
+      if (self.data.qtList[i].checked == true) {
+        vals += self.data.qtList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.ycList.length; i++) {
+      if (self.data.ycList[i].checked == true) {
+        vals += self.data.ycList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.ssList.length; i++) {
+      if (self.data.ssList[i].checked == true) {
+        vals += self.data.ssList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.jzbsList.length; i++) {
+      if (self.data.jzbsList[i].checked == true) {
+        vals += self.data.jzbsList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.workList.length; i++) {
+      if (self.data.workList[i].checked == true) {
+        vals += self.data.workList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.likeList.length; i++) {
+      if (self.data.likeList[i].checked == true) {
+        vals += self.data.likeList[i].value + ',';
+      }
+    }
+    for (let i = 0; i < self.data.tdist.length; i++) {
+      if (self.data.tdist[i].checked == true) {
+        vals += self.data.tdist[i].value + ',';
+      }
+    }
+    let gender='';
+    if (self.data.index==1){
+      gender='男';
+    } else if (self.data.index == 2){
+      gender = '女';
+    }
+    self.setData({
+      checkVals: vals,
+      gender: gender
+    });  
+  },
   questionSubmit: function () {
-    var self = this;
+    let self = this;
     let name = self.data.name;
     let phone = self.data.phone;
     let age = self.data.age;
@@ -131,20 +209,36 @@ Page({
       })
       return;
     }
-    var that = this;
-    that.data.showLoading = false;
+    var that = this; 
+    that.setData({
+      showLoading: false
+    });
+    self.checkbox();  
     wx.request({
-      url: servsers + '/khtj/json/base/tabConsultation/add',
+      url: servsers + '/khtj/json/base/tabConsultation/save',
       data: {
         name: name,
         phone: phone,
-        cnts: self.data.detail
+        age: that.data.age,
+        gender: that.data.gender,
+        checkVals: that.data.checkVals,
+        detail: self.data.detail,
+        allGoodsdetail: self.data.allGoodsdetail,
+        gxydetail: self.data.gxydetail,
+        xzbdetail: self.data.xzbdetail,
+        tlbdetail: self.data.tlbdetail,
+        qtdetail: self.data.qtdetail,
+        ycdetail: self.data.ycdetail,
+        ssdetail: self.data.ssdetail
       },
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (e) {
+        that.setData({
+          showLoading: true
+        });
         if (e.data.status == 200) {
           wx.showToast({
             title: '提交成功',
@@ -152,10 +246,20 @@ Page({
             duration: 1200
           }),
             that.setData({
+                index: 0,
                 name: '',
                 phone: '',
+                age: '',
+                gender: '',
                 detail: '',
-                age:''
+                checkVals: '',
+                allGoodsdetail: '',
+                gxydetail: '',
+                xzbdetail: '',
+                tlbdetail: '',
+                qtdetail: '',
+                ycdetail: '',
+                ssdetail: ''
             });
         } else {
           wx.showToast({
@@ -164,14 +268,11 @@ Page({
             duration: 1200
           })
         }
-
       },
-      complete: function (comp) {
+      fail: function (e) {
         that.setData({
           showLoading: true
         });
-      },
-      fail: function (e) {
         wx.showToast({
           title: '提交失败',
           icon: 'fail',
@@ -199,6 +300,42 @@ Page({
   bindAge(e) {
     this.setData({
       age: e.detail.value
+    })
+  },
+
+  bindallGoods(e) {
+    this.setData({
+      allGoodsdetail: e.detail.value
+    })
+  },
+  bindgxy(e) {
+    this.setData({
+      gxydetail: e.detail.value
+    })
+  },
+  bindxzb(e) {
+    this.setData({
+      xzbdetail: e.detail.value
+    })
+  },
+  bindtlb(e) {
+    this.setData({
+      tlbdetail: e.detail.value
+    })
+  },
+  bindqt(e) {
+    this.setData({
+      qtdetail: e.detail.value
+    })
+  },
+  bindyc(e) {
+    this.setData({
+      ycdetail: e.detail.value
+    })
+  },
+  bindss(e) {
+    this.setData({
+      ssdetail: e.detail.value
     })
   },
   serviceValChange: function (e) {
@@ -383,5 +520,6 @@ Page({
      index: e.detail.value
    })
  }
+
 
 })
