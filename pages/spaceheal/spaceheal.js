@@ -29,7 +29,7 @@ Page({
     var that = this
   	//调取职业病
     wx.request({
-      url: servsers +'/khtj/json/base/tabGroupcheck/getZybDetails',
+      url: servsers +'/khtj/json/base/tabGroupcheck/getJkDetails',
       success: function (e) {
       	var list = [];
       	var taglist = [];
